@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
 import { Link } from "react-router-dom";
+import FavoritesList from "../components/FavoritesList";
 
 const SearchPage = () => {
   const [properties, setProperties] = useState([]);
@@ -125,58 +126,17 @@ const SearchPage = () => {
           onDragStart={handleDragFromResult}
         />
       </div>
-      <aside
-        className="favorites-sidebar"
-        onDragOver={allowDrop} // Essential to allow dropping
+      <FavoritesList
+        favorites={favorites}
+        onClear={clearFavorites}
+        onRemove={removeFromFavorites}
+        onDragStart={handleDragFromFav}
+        allowDrop={allowDrop}
         onDrop={(e) => {
-          e.stopPropagation(); // Stop the 'Main Area' drop from firing
+          e.stopPropagation();
           handleDropOnSidebar(e);
         }}
-      >
-        <div className="fav-header">
-          <h3>❤️ Favorites</h3>
-          {favorites.length > 0 && (
-            <button onClick={clearFavorites} className="btn-clear">
-              Clear
-            </button>
-          )}
-        </div>
-
-        {favorites.length === 0 ? (
-          <div className="fav-placeholder">
-            <p>Drag properties here to save</p>
-          </div>
-        ) : (
-          <ul className="fav-list">
-            {favorites.map((fav) => (
-              <li
-                key={fav.id}
-                className="fav-item"
-                draggable="true"
-                onDragStart={(e) => handleDragFromFav(e, fav.id)}
-              >
-                <Link to={`/property/${fav.id}`} className="fav-link">
-                  <img src={fav.picture} alt="thumb" />
-                  <div className="fav-info">
-                    <h4>£{fav.price.toLocaleString()}</h4>
-                    <p>{fav.type}</p>
-                  </div>
-                </Link>
-
-                <button
-                  className="btn-remove"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeFromFavorites(fav.id);
-                  }}
-                >
-                  &times;
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </aside>
+      />
     </main>
   );
 };
