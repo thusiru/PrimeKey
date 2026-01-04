@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, onAddToFav, onDragStart }) => {
   if (results === null) {
     return (
       <div className="welcome-message">
@@ -23,7 +24,12 @@ const SearchResults = ({ results }) => {
 
       <div className="property-grid">
         {results.map((property) => (
-          <div key={property.id} className="property-card">
+          <div
+            key={property.id}
+            className="property-card"
+            draggable
+            onDragStart={(e) => onDragStart(e, property)}
+          >
             <img
               src={property.picture}
               alt={property.location}
@@ -49,10 +55,18 @@ const SearchResults = ({ results }) => {
                   ? property.description.substring(0, 100) + "..."
                   : property.description}
               </p>
-
-              <a href={`/property/${property.id}`} className="view-btn">
-                View Details
-              </a>
+              <div className="card-actions">
+                <Link to={`/property/${property.id}`} className="view-btn">
+                  View Details
+                </Link>
+                <button
+                  className="fav-btn"
+                  onClick={() => onAddToFav(property)}
+                  title="Add to Favorites"
+                >
+                  ❤️
+                </button>
+              </div>
             </div>
           </div>
         ))}
