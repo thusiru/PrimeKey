@@ -11,7 +11,7 @@ const PropertyPage = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await fetch("/properties.json");
+        const res = await fetch("properties.json");
 
         if (!res.ok) {
           throw new Error("Failed to fetch data");
@@ -32,7 +32,7 @@ const PropertyPage = () => {
   }, [id]);
 
   if (!property)
-    return <div className="loading">Loading property details...</div>;
+    return <main className="loading">Loading property details...</main>;
 
   return (
     <main>

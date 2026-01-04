@@ -11,7 +11,7 @@ const SearchPage = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await fetch("/properties.json");
+        const res = await fetch("properties.json");
         if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
         setProperties(data.properties);
@@ -103,8 +103,8 @@ const SearchPage = () => {
 
   const handleDropOnMain = (e) => {
     e.preventDefault();
-    const type = e.dataTransfer().getData("type");
-    const propId = e.dataTransfer().getData("propId");
+    const type = e.dataTransfer.getData("type");
+    const propId = e.dataTransfer.getData("propId");
 
     if (type === "REMOVE_FAV") {
       removeFromFavorites(propId);
