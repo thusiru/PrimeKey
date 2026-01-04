@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import DOMPurify from "dompurify";
+import FavoriteButton from "./FavoriteButton";
 
 const PropertyInfo = ({ property }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <div className="info-section">
       <h1>
@@ -25,9 +28,11 @@ const PropertyInfo = ({ property }) => {
       />
 
       <div className="action-buttons">
-        <button className="contact-btn">Contact Agent</button>
-        {/* You can add your actual 'Add to Fav' button here later */}
-        <button className="fav-btn-secondary">Add to Favorites</button>
+        <button className="contact-btn">Buy</button>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onClick={() => setIsFavorite(!isFavorite)}
+        />
       </div>
     </div>
   );

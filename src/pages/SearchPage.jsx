@@ -124,6 +124,7 @@ const SearchPage = () => {
           results={filteredProperties}
           onAddToFav={addToFavorites}
           onDragStart={handleDragFromResult}
+          favorites={favorites}
         />
       </div>
       <FavoritesList
