@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const SearchResults = ({ results, onAddToFav, onDragStart }) => {
   if (results === null) {
@@ -50,11 +51,16 @@ const SearchResults = ({ results, onAddToFav, onDragStart }) => {
               <p className="location">
                 {property.location} ({property.postcode})
               </p>
-              <p className="description">
-                {property.description.length > 100
-                  ? property.description.substring(0, 100) + "..."
-                  : property.description}
-              </p>
+              <div
+                className="description"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(
+                    property.description.length > 100
+                      ? property.description.substring(0, 100) + "..."
+                      : property.description
+                  ),
+                }}
+              />
               <div className="card-actions">
                 <Link to={`/property/${property.id}`} className="view-btn">
                   View Details

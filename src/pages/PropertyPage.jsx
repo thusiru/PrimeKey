@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import DOMPurify from "dompurify";
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -62,11 +63,16 @@ const PropertyPage = () => {
             <p className="address">
               {property.location}, {property.postcode}
             </p>
-            <p className="short-desc">
-              {property.description.length > 150
-                ? property.description.substring(0, 150) + "..."
-                : property.description}
-            </p>
+            <div
+              className="short-desc"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  property.description.length > 150
+                    ? property.description.substring(0, 150) + "..."
+                    : property.description
+                ),
+              }}
+            />
             <div>
               <button className="contact-btn">Contact Agent</button>
               <div>Add to favorites</div>
@@ -85,7 +91,11 @@ const PropertyPage = () => {
             <TabPanel>
               <div className="tab-content">
                 <h3>Property Description</h3>
-                <p>{property.description}</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(property.description),
+                  }}
+                />
               </div>
             </TabPanel>
 
@@ -95,7 +105,7 @@ const PropertyPage = () => {
                 <img
                   src={property.floorPlan}
                   alt="Floor Plan"
-                  style={{ maxWidth: "100%" }}
+                  className="floor-plan-img"
                 />
               </div>
             </TabPanel>
@@ -107,7 +117,7 @@ const PropertyPage = () => {
                   src={property.mapUrl}
                   width="100%"
                   height="400"
-                  style={{ border: 0 }}
+                  className="map-frame"
                   allowFullScreen=""
                   loading="lazy"
                   title="Google Map"
