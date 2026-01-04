@@ -146,6 +146,7 @@ const SearchForm = ({ onSearch }) => {
               <button type="submit" className="search-btn">
                 Search
               </button>
+              
               {/* Clear Button */}
               <button type="button" className="clear-btn" onClick={handleClear}>
                 Clear
