@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import DOMPurify from "dompurify";
 import PropertyGallery from "../components/PropertyGallery";
 import PropertyInfo from "../components/PropertyInfo";
 import PropertyTabs from "../components/PropertyTabs";

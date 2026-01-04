@@ -1,6 +1,6 @@
 import React from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import "react-tabs/style/react-tabs.css"; // Ensure styles are imported
+import "react-tabs/style/react-tabs.css";
 import DOMPurify from "dompurify";
 
 const PropertyTabs = ({ property }) => {
@@ -13,7 +13,6 @@ const PropertyTabs = ({ property }) => {
           <Tab>Map</Tab>
         </TabList>
 
-        {/* Tab 1: Long Description */}
         <TabPanel>
           <div className="tab-content">
             <h3>Property Description</h3>
@@ -25,7 +24,6 @@ const PropertyTabs = ({ property }) => {
           </div>
         </TabPanel>
 
-        {/* Tab 2: Floor Plan */}
         <TabPanel>
           <div className="tab-content">
             <h3>Floor Plan</h3>
@@ -37,7 +35,6 @@ const PropertyTabs = ({ property }) => {
           </div>
         </TabPanel>
 
-        {/* Tab 3: Map */}
         <TabPanel>
           <div className="tab-content">
             <h3>Location</h3>

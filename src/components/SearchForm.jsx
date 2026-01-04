@@ -47,13 +47,11 @@ const SearchForm = ({ onSearch }) => {
         <h2>with UK's largest choice of homes</h2>
       </div>
 
-      {/* Form Box */}
       <Localization date={new DateLocalizer({ culture: "en-GB" })}>
         <form className="search-box" onSubmit={handleSubmit}>
           <h3>Search Properties to buy</h3>
 
           <div className="filters-layout">
-            {/* FILTER 1: Property Type */}
             <div className="filter-group">
               <label>Type</label>
               <DropdownList
@@ -63,7 +61,6 @@ const SearchForm = ({ onSearch }) => {
               />
             </div>
 
-            {/* FILTER 2: Price Range */}
             <div className="filter-group">
               <label>Price (£)</label>
               <div className="row">
@@ -86,7 +83,6 @@ const SearchForm = ({ onSearch }) => {
               </div>
             </div>
 
-            {/* FILTER 3: Bedrooms */}
             <div className="filter-group">
               <label>Bedrooms</label>
               <div className="row">
@@ -107,7 +103,6 @@ const SearchForm = ({ onSearch }) => {
               </div>
             </div>
 
-            {/* FILTER 4: Date Added */}
             <div className="filter-group">
               <div className="row">
                 <div>
@@ -129,7 +124,6 @@ const SearchForm = ({ onSearch }) => {
               </div>
             </div>
 
-            {/* FILTER 5: Postcode */}
             <div className="filter-group">
               <label>Postcode</label>
               <Combobox
@@ -142,12 +136,10 @@ const SearchForm = ({ onSearch }) => {
             </div>
 
             <div className="button-group">
-              {/* Search Button */}
               <button type="submit" className="search-btn">
                 Search
               </button>
-              
-              {/* Clear Button */}
+
               <button type="button" className="clear-btn" onClick={handleClear}>
                 Clear
               </button>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
-import { Link } from "react-router-dom";
 import FavoritesList from "../components/FavoritesList";
 
 const SearchPage = () => {

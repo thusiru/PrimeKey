@@ -15,7 +15,6 @@ const PropertyInfo = ({ property }) => {
         {property.location}, {property.postcode}
       </p>
 
-      {/* Short Description with Safety */}
       <div
         className="short-desc"
         dangerouslySetInnerHTML={{
