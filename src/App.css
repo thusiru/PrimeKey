@@ -7,7 +7,6 @@
 
 body {
   margin: 0;
-  background-color: #fcfdfe;
   color: #333;
 }
 
@@ -152,6 +151,7 @@ header nav a {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  margin-top: 10px;
   justify-content: center;
 }
 
