@@ -89,7 +89,7 @@ header nav a {
 .filters-layout {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px 30px;
   align-items: flex-end;
 }
 
@@ -101,7 +101,7 @@ header nav a {
 
 .filter-group .row {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 .button-group {
