@@ -6,7 +6,15 @@ import FavoritesList from "../components/FavoritesList";
 const SearchPage = () => {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState(null);
-  const [favorites, setFavorites] = useState([]);
+
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("primekey_favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("primekey_favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   useEffect(() => {
     const fetchProperties = async () => {

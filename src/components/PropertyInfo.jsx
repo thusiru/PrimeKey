@@ -3,7 +3,26 @@ import DOMPurify from "dompurify";
 import FavoriteButton from "./FavoriteButton";
 
 const PropertyInfo = ({ property }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(() => {
+    const saved = localStorage.getItem("primekey_favorites");
+    const favorites = saved ? JSON.parse(saved) : [];
+    return favorites.some((fav) => fav.id === property.id);
+  });
+
+  const handleToggleFavorite = () => {
+    const saved = localStorage.getItem("primekey_favorites");
+    let favorites = saved ? JSON.parse(saved) : [];
+
+    if (isFavorite) {
+      favorites = favorites.filter((fav) => fav.id !== property.id);
+      setIsFavorite(false);
+    } else {
+      favorites.push(property);
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("primekey_favorites", JSON.stringify(favorites));
+  };
 
   return (
     <div className="info-section">
@@ -30,7 +49,7 @@ const PropertyInfo = ({ property }) => {
         <button className="contact-btn">Contact Agent</button>
         <FavoriteButton
           isFavorite={isFavorite}
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={handleToggleFavorite}
         />
       </div>
     </div>
