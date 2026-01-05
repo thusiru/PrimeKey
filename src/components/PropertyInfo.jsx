@@ -27,7 +27,7 @@ const PropertyInfo = ({ property }) => {
       />
 
       <div className="action-buttons">
-        <button className="contact-btn">Buy</button>
+        <button className="contact-btn">Contact Agent</button>
         <FavoriteButton
           isFavorite={isFavorite}
           onClick={() => setIsFavorite(!isFavorite)}
