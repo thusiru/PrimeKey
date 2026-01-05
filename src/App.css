@@ -501,10 +501,9 @@ header nav a {
   font-size: 0.8rem;
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .page-layout {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   .favorites-sidebar {
     width: 100%;
