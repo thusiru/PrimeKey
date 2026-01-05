@@ -52,9 +52,7 @@ const SearchResults = ({ results, onAddToFav, onDragStart, favorites }) => {
                 <h3>
                   {property.bedrooms} Bed {property.type} for sale
                 </h3>
-                <p className="location">
-                  {property.location} ({property.postcode})
-                </p>
+                <p className="location">{property.location}</p>
                 <div
                   className="description"
                   dangerouslySetInnerHTML={{
