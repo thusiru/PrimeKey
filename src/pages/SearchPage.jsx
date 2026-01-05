@@ -72,6 +72,15 @@ const SearchPage = () => {
     setFavorites(favorites.filter((fav) => fav.id !== id));
   };
 
+  const handleToggleFavorite = (property) => {
+    const exists = favorites.some((fav) => fav.id === property.id);
+    if (exists) {
+      setFavorites(favorites.filter((fav) => fav.id !== property.id));
+    } else {
+      setFavorites([...favorites, property]);
+    }
+  };
+
   const clearFavorites = () => {
     setFavorites([]);
   };
@@ -121,7 +130,7 @@ const SearchPage = () => {
         <SearchForm onSearch={handleSearch} />
         <SearchResults
           results={filteredProperties}
-          onAddToFav={addToFavorites}
+          onAddToFav={handleToggleFavorite}
           onDragStart={handleDragFromResult}
           favorites={favorites}
         />
