@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import DOMPurify from "dompurify";
-import FavoriteButton from "./FavoriteButton";
+import PropertyCard from "./PropertyCard";
 
 const SearchResults = ({ results, onAddToFav, onDragStart, favorites }) => {
   if (results === null) {
@@ -26,54 +24,18 @@ const SearchResults = ({ results, onAddToFav, onDragStart, favorites }) => {
 
       <div className="property-grid">
         {results.map((property) => {
-          const isFav = favorites.some((fav) => fav.id === property.id);
+          const isFav = favorites.some(
+            (fav) => String(fav.id) === String(property.id)
+          );
 
           return (
-            <div
+            <PropertyCard
               key={property.id}
-              className="property-card"
-              draggable
-              onDragStart={(e) => onDragStart(e, property)}
-            >
-              <img
-                src={property.picture}
-                alt={property.location}
-                className="card-img"
-              />
-
-              <div className="card-content">
-                <div className="card-header">
-                  <span className="price">
-                    £{property.price.toLocaleString()}
-                  </span>
-                  <span className="type-badge">{property.type}</span>
-                </div>
-
-                <h3>
-                  {property.bedrooms} Bed {property.type} for sale
-                </h3>
-                <p className="location">{property.location}</p>
-                <div
-                  className="description"
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                      property.description.length > 100
-                        ? property.description.substring(0, 100) + "..."
-                        : property.description
-                    ),
-                  }}
-                />
-                <div className="card-actions">
-                  <Link to={`/property/${property.id}`} className="view-btn">
-                    View Details
-                  </Link>
-                  <FavoriteButton
-                    isFavorite={isFav}
-                    onClick={() => onAddToFav(property)}
-                  />
-                </div>
-              </div>
-            </div>
+              property={property}
+              isFavorite={isFav}
+              onAddToFav={onAddToFav}
+              onDragStart={onDragStart}
+            />
           );
         })}
       </div>
