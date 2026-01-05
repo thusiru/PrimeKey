@@ -3,6 +3,7 @@ import "./App.css";
 import SearchPage from "./pages/SearchPage";
 import PropertyPage from "./pages/PropertyPage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<SearchPage />} />
         <Route path="/property/:id" element={<PropertyPage />} />
       </Routes>
+      <Footer />
     </HashRouter>
   );
 }

@@ -13,7 +13,7 @@ body {
 main,
 header {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -519,4 +519,63 @@ header nav a {
 
 .floor-plan-img {
   max-width: 100%;
+}
+
+.site-footer {
+  padding: 40px 0 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0 20px 40px;
+}
+
+.footer-section h4 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.footer-logo {
+  max-width: 150px;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  font-size: 24px;
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  border-top: 1px solid #eee;
 }
